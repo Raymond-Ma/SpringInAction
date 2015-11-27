@@ -27,6 +27,6 @@
 	
 	<bean id="chosenCity"
 	      class="com.springinaction.cities.ChosenCity">
-		<property name="chosenCity" value="#{cityList[2]}"/>
+		<property name="chosenCity" value="#{cityList[T(java.lang.Math).random() * cityList.size()]}"/>
 	</bean>
 </beans>
