@@ -6,6 +6,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	                    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 	
+	<!-- Use java.util.list to hold each instance on class City
 	<util:list id="cityList">
 	<bean class="com.springinaction.cities.City"
 		  p:name="Chicago" p:state="IL" p:population="2853114"/>
@@ -24,9 +25,60 @@
 	<bean class="com.springinaction.cities.City"
 	      p:name="Las Cruces" p:state="NM" p:population="91865"/>
 	</util:list>
+	-->
 	
+	<bean id="Chicago"
+		  class="com.springinaction.cities.City"
+		  p:name="Chicago" p:state="IL" p:population="2853114"/>
+		  
+	<bean id="Atlanta"
+		  class="com.springinaction.cities.City"
+		  p:name="Atlanta" p:state="GA" p:population="537958"/>
+		  
+	<bean id="Dallas"
+		  class="com.springinaction.cities.City"
+		  p:name="Dallas" p:state="TX" p:population="1279910"/>
+		  
+	<bean id="Huston"
+		  class="com.springinaction.cities.City"
+		  p:name="Huston" p:state="TX" p:population="2242193"/>
+		  
+	<bean id="Odessa"
+		  class="com.springinaction.cities.City"
+		  p:name="Odessa" p:state="TX" p:population="90943"/>
+		  
+	<bean id="El Paso"
+		  class="com.springinaction.cities.City"
+		  p:name="El Paso" p:state="TX" p:population="613190"/>
+		  
+	<bean id="Jal"
+		  class="com.springinaction.cities.City"
+		  p:name="Jal" p:state="NM" p:population="1996"/>
+		  
+	<bean id="Las Cruces"
+		  class="com.springinaction.cities.City"
+	      p:name="Las Cruces" p:state="NM" p:population="91865"/>
+	      
+	<util:map id="cityMap">
+		<entry key="CHICAGO" value-ref="Chicago"/>
+		<entry key="ATLANTA" value-ref="Atlanta"/>
+		<entry key="DALLAS" value-ref="Dallas"/>
+		<entry key="HUSTON" value-ref="Huston"/>
+		<entry key="ODESSA" value-ref="Odessa"/>
+		<entry key="EL_PASO" value-ref="El Paso"/>
+		<entry key="JAL" value-ref="Jal"/>
+		<entry key="LAS_CRUCES" value-ref="Las Cruces"/>
+	</util:map>
+	
+	<!-- Use java.util.list to hold each instance on class City
 	<bean id="chosenCity"
 	      class="com.springinaction.cities.ChosenCity">
 		<property name="chosenCity" value="#{cityList[T(java.lang.Math).random() * cityList.size()]}"/>
+	</bean>
+	-->
+	
+	<bean id="chosenCity"
+	      class="com.springinaction.cities.ChosenCity">
+		<property name="chosenCity" value="#{cityMap['DALLAS']}"/>
 	</bean>
 </beans>
