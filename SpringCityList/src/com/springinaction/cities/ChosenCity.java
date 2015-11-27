@@ -1,5 +1,7 @@
 package com.springinaction.cities;
 
+import java.util.Collection;
+
 /**
  * This is an data structure on city, which has been selected by applicationContext.xml
  * @author RaymondMa
@@ -7,7 +9,7 @@ package com.springinaction.cities;
  */
 public class ChosenCity {
 	private String msgEncoding;
-	private City chosenCity;
+	private Collection<City> chosenCity;
 	
 	public ChosenCity() {}
 	
@@ -15,14 +17,20 @@ public class ChosenCity {
 		this.msgEncoding = msgEncoding;
 	}
 	
-	public void setChosenCity(City chosenCity) {
+	public String getMsgEncoding() {
+		return msgEncoding;
+	}
+	
+	public void setChosenCity(Collection<City> chosenCity) {
 		this.chosenCity = chosenCity;
 	}
 	
 	public void showCityMsg() {
-		System.out.println("City name : " + chosenCity.getName());
-		System.out.println("City State : " + chosenCity.getState());
-		System.out.println("City Population : " + chosenCity.getPopulation());
+		for (City mCity : chosenCity) {
+			System.out.println("City name : " + mCity.getName());
+			System.out.println("City State : " + mCity.getState());
+			System.out.println("City Population : " + mCity.getPopulation());
+		}
 		System.out.println("City Message Encoding : " + msgEncoding);
 	}
 }

@@ -15,6 +15,12 @@ public class CityConsole {
 				"com/springinaction/cities/applicationContext.xml");
 		
 		ChosenCity mChosenCity = (ChosenCity) ctx.getBean("chosenCity");
+		ChosenCity firstRlt = (ChosenCity) ctx.getBean("firstRlt");
+		ChosenCity lastRlt = (ChosenCity) ctx.getBean("lastRlt");
 		mChosenCity.showCityMsg();
+		System.out.println("First Query Result is shown as below: -- ");
+		firstRlt.showCityMsg();
+		System.out.println("Last Query Result is shown as below: -- ");
+		lastRlt.showCityMsg();
 	}
 }
