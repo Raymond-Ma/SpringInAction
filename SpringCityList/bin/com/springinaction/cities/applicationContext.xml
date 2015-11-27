@@ -79,6 +79,7 @@
 	
 	<bean id="chosenCity"
 	      class="com.springinaction.cities.ChosenCity">
+		<property name="msgEncoding" value="#{systemProperties['file.encoding']}"/>
 		<property name="chosenCity" value="#{cityMap['DALLAS']}"/>
 	</bean>
 </beans>
