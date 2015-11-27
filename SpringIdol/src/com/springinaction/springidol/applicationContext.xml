@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="duke"
+	      class="com.springinaction.juggler.PoeticJuggler"
+          scope="singleton">
+		<constructor-arg value="15"/>
+		<constructor-arg ref="sonnet29"/>
+	</bean>
+	
+	<!-- Use namespace to set reference on bean instrument -->
+	<bean id="kenny"
+	      class="com.springinaction.musician.Instrumentalist"
+	      scope="singleton"
+	      p:song="Jingle Bells"
+	      p:instrument-ref="saxophone"/>
+	<bean id="carl"
+	      class="com.springinaction.musician.Instrumentalist"
+	      scope="singleton">
+		  <property name="song" value="#{kenny.song ?: 'Jingle Bells'}"/>
+		  <property name="instrument" ref="piano"/>
+	</bean>
+
+	<!-- Use property to set reference on bean instrument
+	<bean id="kenny"
+	      class="com.springinaction.musician.Instrumentalist"
+		<property name="song" value="Jingle Bells"/>
+		<property name="instrument">
+			<bean class="com.springinaction.springidol.Piano"/>
+		</property>
+	</bean>
+	-->
+	
+	<!-- Use list refering to objects as map
+	<bean id="hank"
+	      class="com.springinaction.musician.OneMenBand">
+		<property name="instruments">
+			<map>
+				<entry key="SAXOPHONE" value-ref="saxophone"/>
+				<entry key="PIANO" value-ref="piano"/>
+				<entry key="GUITAR" value-ref="guitar"/>
+			</map>
+		</property>
+	</bean>
+	-->
+	
+	<!-- Use list refering to objects as collection
+	<bean id="hank"
+	      class="com.springinaction.musician.OneMenBand">
+		<property name="instruments">
+			<list>
+				<ref bean="saxophone"/>
+				<ref bean="piano"/>
+				<ref bean="guitar"/>
+			</list>
+		</property>
+	</bean>
+	-->
+	
+	<!-- Use list refering to objects as properties -->
+	<bean id="hank"
+	      class="com.springinaction.musician.OneMenBand">
+        <property name="instruments">
+			<props>
+				<prop key="GUITAR">STRUM STRUM STRUM</prop>
+				<prop key="CYMBAL">CRASH CRASH CRASH</prop>
+				<prop key="HARMONICA">HUM HUM HUM</prop>
+			</props>
+		</property>
+		<property name="nullString"><null/></property>
+	</bean>
+	
+	<bean id="sonnet29"
+	      class="com.springinaction.juggler.Sonnet29"
+	      scope="singleton"/>
+
+	<bean id="theStage"
+	      class="com.springinaction.springidol.Stage"
+	      scope="singleton"
+	      factory-method="getInstance"/>
+
+	<bean id="auditorium"
+	      class="com.springinaction.springidol.Auditorium"
+	      init-method="turnOnLights"
+	      destroy-method="turnOffLights"/>
+	      
+	<bean id="saxophone"
+	      class="com.springinaction.instrument.Saxophone"/>
+	      
+	<bean id="piano"
+	      class="com.springinaction.instrument.Piano"/>
+	      
+	<bean id="guitar"
+	      class="com.springinaction.instrument.Guitar"/>
+</beans>
