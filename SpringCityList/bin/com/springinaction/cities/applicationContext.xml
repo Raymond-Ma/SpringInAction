@@ -103,4 +103,24 @@
 	      <property name="chosenCity" value="#{cityList.$[getPopulation() gt 1000000]}"/>
 	</bean>
 	
+	<!-- Extract city name and state from city list   
+	<bean id="cityInfo"
+	      class="com.springinaction.cities.CityInfo">
+		<property name="cityInfo" value="#{cityList.![name + ',' + state]}"/>
+	</bean>
+	-->
+	
+	<!-- Extract city name and state from chosenCity
+	<bean id="cityInfo"
+	      class="com.springinaction.cities.CityInfo">
+		<property name="cityInfo" value="#{chosenCity.getChosenCity().![name + ',' + state]}"/>
+	</bean>
+	-->
+	
+	<!-- Extract city name and state from city whose population is larger than 100000 -->
+	<bean id="bigCityInfo"
+	      class="com.springinaction.cities.CityInfo">
+		<property name="cityInfo" value="#{cityList.?[getPopulation() gt 100000].![name + ',' + state]}"/>
+	</bean>
+	
 </beans>

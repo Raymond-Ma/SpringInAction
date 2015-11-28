@@ -17,10 +17,14 @@ public class CityConsole {
 		ChosenCity mChosenCity = (ChosenCity) ctx.getBean("chosenCity");
 		ChosenCity firstRlt = (ChosenCity) ctx.getBean("firstRlt");
 		ChosenCity lastRlt = (ChosenCity) ctx.getBean("lastRlt");
+		CityInfo mCityInfo = (CityInfo) ctx.getBean("bigCityInfo");
+		
 		mChosenCity.showCityMsg();
 		System.out.println("First Query Result is shown as below: -- ");
 		firstRlt.showCityMsg();
 		System.out.println("Last Query Result is shown as below: -- ");
 		lastRlt.showCityMsg();
+		System.out.println("City Info extracted from big city is shown as below: -- ");
+		mCityInfo.showCityMsg();
 	}
 }

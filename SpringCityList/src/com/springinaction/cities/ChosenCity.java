@@ -25,6 +25,10 @@ public class ChosenCity {
 		this.chosenCity = chosenCity;
 	}
 	
+	public Collection<City> getChosenCity() {
+		return chosenCity;
+	}
+	
 	public void showCityMsg() {
 		for (City mCity : chosenCity) {
 			System.out.println("City name : " + mCity.getName());

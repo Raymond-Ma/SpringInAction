@@ -1,7 +1,7 @@
 package com.springinaction.cities;
 
 /**
- * This is an data structure on city
+ * This is a data structure on city
  * @author RaymondMa
  * @version 0.0.1
  */
