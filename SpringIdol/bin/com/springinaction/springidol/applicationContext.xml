@@ -131,6 +131,12 @@
 						  expression="execution(* com.springinaction.springidol.Thinker.thinkOfSomething(String)) and args(thinkingThoughts)"/>
 			<aop:before pointcut-ref="thinking" method="interceptThoughts" arg-names="thinkingThoughts"/>
 		</aop:aspect>
+		<aop:aspect>
+			<aop:declare-parents
+				types-matching="com.springinaction.springidol.Performer+"
+				implement-interface="com.springinaction.springidol.Contestant"
+				default-impl="com.springinaction.perfadditional.GraciousContestant"/>
+		</aop:aspect>
 	</aop:config>
 	
 </beans>

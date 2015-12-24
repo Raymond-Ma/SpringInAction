@@ -16,6 +16,9 @@ public class SpringIdol {
 //		kennyPerformer.perform();
 		carlPerformer.perform();
 		
+		Contestant carlGracious = (Contestant) ctx.getBean("carl");
+		carlGracious.receiveAward();
+		
 		Thinker jackThinker = (Thinker) ctx.getBean("volunteer");
 		jackThinker.thinkOfSomething("Spring Idol is great!");
 	}
