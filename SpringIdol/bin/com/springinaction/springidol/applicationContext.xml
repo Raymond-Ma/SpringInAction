@@ -102,7 +102,8 @@
 	      
 	<bean id="audience"
 	      class="com.springinaction.springidol.Audience"/>
-	
+	      
+	<!-- Use pre/post notice on aop definition
 	<aop:config>
 		<aop:aspect ref="audience">
 			<aop:pointcut id="performance" expression="execution(* com.springinaction.springidol.Performer.perform(..))"/>
@@ -110,6 +111,14 @@
 			<aop:before pointcut-ref="performance" method="turnOffCellPhones"/>
 			<aop:after-returning pointcut-ref="performance" method="applaud"/>
 			<aop:after-throwing pointcut-ref="performance" method="demandRefund"/>
+		</aop:aspect>
+	</aop:config>
+	-->
+	
+	<aop:config>
+		<aop:aspect ref="audience">
+			<aop:pointcut id="performance" expression="execution(* com.springinaction.springidol.Performer.perform(..))"/>
+			<aop:around pointcut-ref="performance" method="watchPerformance"/>
 		</aop:aspect>
 	</aop:config>
 	
