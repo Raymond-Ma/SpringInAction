@@ -102,6 +102,12 @@
 	      
 	<bean id="audience"
 	      class="com.springinaction.springidol.Audience"/>
+
+	<bean id="magician"
+		  class="com.springinaction.wizard.Magician"/>
+
+	<bean id="volunteer"
+		  class="com.springinaction.wizard.Volunteer"/>
 	      
 	<!-- Use pre/post notice on aop definition
 	<aop:config>
@@ -119,6 +125,11 @@
 		<aop:aspect ref="audience">
 			<aop:pointcut id="performance" expression="execution(* com.springinaction.springidol.Performer.perform(..))"/>
 			<aop:around pointcut-ref="performance" method="watchPerformance"/>
+		</aop:aspect>
+		<aop:aspect ref="magician">
+			<aop:pointcut id="thinking"
+						  expression="execution(* com.springinaction.springidol.Thinker.thinkOfSomething(String)) and args(thinkingThoughts)"/>
+			<aop:before pointcut-ref="thinking" method="interceptThoughts" arg-names="thinkingThoughts"/>
 		</aop:aspect>
 	</aop:config>
 	
