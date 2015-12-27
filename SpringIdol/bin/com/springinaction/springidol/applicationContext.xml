@@ -121,11 +121,15 @@
 	</aop:config>
 	-->
 	
+	<aop:aspectj-autoproxy/>
+	
 	<aop:config>
+		<!-- Mask around advice and introduce aop by annotation
 		<aop:aspect ref="audience">
 			<aop:pointcut id="performance" expression="execution(* com.springinaction.springidol.Performer.perform(..))"/>
 			<aop:around pointcut-ref="performance" method="watchPerformance"/>
 		</aop:aspect>
+		-->
 		<aop:aspect ref="magician">
 			<aop:pointcut id="thinking"
 						  expression="execution(* com.springinaction.springidol.Thinker.thinkOfSomething(String)) and args(thinkingThoughts)"/>
