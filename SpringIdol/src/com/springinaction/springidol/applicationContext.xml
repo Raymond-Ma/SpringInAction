@@ -130,11 +130,13 @@
 			<aop:around pointcut-ref="performance" method="watchPerformance"/>
 		</aop:aspect>
 		-->
+		<!-- Mask magician advice and introduce aop by annotation
 		<aop:aspect ref="magician">
 			<aop:pointcut id="thinking"
 						  expression="execution(* com.springinaction.springidol.Thinker.thinkOfSomething(String)) and args(thinkingThoughts)"/>
 			<aop:before pointcut-ref="thinking" method="interceptThoughts" arg-names="thinkingThoughts"/>
 		</aop:aspect>
+		-->
 		<aop:aspect>
 			<aop:declare-parents
 				types-matching="com.springinaction.springidol.Performer+"
