@@ -108,6 +108,9 @@
 
 	<bean id="volunteer"
 		  class="com.springinaction.wizard.Volunteer"/>
+
+	<bean id="contestantIntroducer"
+		  class="com.springinaction.perfadditional.ContestantIntroducer"/>
 	      
 	<!-- Use pre/post notice on aop definition
 	<aop:config>
@@ -123,20 +126,17 @@
 	
 	<aop:aspectj-autoproxy/>
 	
+	<!-- Mask aop advice and introduce aop by annotation
 	<aop:config>
-		<!-- Mask around advice and introduce aop by annotation
 		<aop:aspect ref="audience">
 			<aop:pointcut id="performance" expression="execution(* com.springinaction.springidol.Performer.perform(..))"/>
 			<aop:around pointcut-ref="performance" method="watchPerformance"/>
 		</aop:aspect>
-		-->
-		<!-- Mask magician advice and introduce aop by annotation
 		<aop:aspect ref="magician">
 			<aop:pointcut id="thinking"
 						  expression="execution(* com.springinaction.springidol.Thinker.thinkOfSomething(String)) and args(thinkingThoughts)"/>
 			<aop:before pointcut-ref="thinking" method="interceptThoughts" arg-names="thinkingThoughts"/>
 		</aop:aspect>
-		-->
 		<aop:aspect>
 			<aop:declare-parents
 				types-matching="com.springinaction.springidol.Performer+"
@@ -144,5 +144,6 @@
 				default-impl="com.springinaction.perfadditional.GraciousContestant"/>
 		</aop:aspect>
 	</aop:config>
+	-->
 	
 </beans>
